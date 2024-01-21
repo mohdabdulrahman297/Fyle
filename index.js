@@ -1,4 +1,4 @@
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
 
 let currentPage = 1;
 const repositoriesPerPage = 10;
