@@ -14,8 +14,17 @@
         <input type="text" id="username" placeholder="Enter github username"/>
         <button onclick="getGitHubProfile()">Get Repo and profile</button>
 
+        <div id="loading-spinner" style="display: none;">Loading...</div>
+
+
         <div id="profile-container"></div>
         <div id="repositories-list"></div>
+
+        <div id="pagination" style="display: none;">
+            <button id="older" onclick="olderPage()">⬅️ Older</button>
+            <span id="currentPage">Page 1</span>
+            <button id="newer" onclick="newerPage()">Newer ➡️</button>
+        </div>
     </div>
 
     <script src="index.js"></script>

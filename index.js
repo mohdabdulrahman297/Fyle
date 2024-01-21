@@ -1,4 +1,7 @@
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
+
+let currentPage = 1;
+const repositoriesPerPage = 10;
 
 async function getGitHubProfile() {
     const username = document.getElementById('username').value;
@@ -9,10 +12,17 @@ async function getGitHubProfile() {
     }
 
     const userUrl = `https://api.github.com/users/${username}`;
-    const repoUrl = `https://api.github.com/users/${username}/repos?per_page=10&page=1`;
+    const repoUrl = `https://api.github.com/users/${username}/repos?per_page=${repositoriesPerPage}&page=${currentPage}`;
     const headers = {
         Authorization: `Bearer ${GITHUB_TOKEN}`
     };
+
+    const startIndex = (currentPage - 1) * repositoriesPerPage;
+
+    //loading
+
+    const loadingSpinner = document.getElementById('loading-spinner');
+    loadingSpinner.style.display = 'block';
 
     try {
         const userResponse = await fetch(userUrl, { headers });
@@ -23,9 +33,12 @@ async function getGitHubProfile() {
 
         displayProfile(userProfile);
         displayRepositories(repositories);
+        showPagination();
     } catch (error) {
         console.error('Error fetching GitHub data:', error);
         alert('Error fetching GitHub data. Please try again.');
+    } finally {
+        loadingSpinner.style.display = 'none';
     }
 }
 
@@ -79,4 +92,27 @@ function displayRepositories(repositories) {
         repoDiv.innerHTML = `<strong>${repository.name}</strong><br><${repository.description || 'No description available'}<br><span>${repository.language}</span>`;
         repositoriesList.appendChild(repoDiv);
     });
+
+    //pagination
+
+    const currentPageElement = document.getElementById('currentPage');
+    currentPageElement.innerText = `Page ${currentPage}`;
 }
+
+function olderPage() {
+    if (currentPage > 1){
+        currentPage--;
+        getGitHubProfile();
+    }
+}
+
+function newerPage() {
+    currentPage++;
+    getGitHubProfile();
+}
+
+function showPagination() {
+    const paginationElement = document.getElementById('pagination');
+    paginationElement.style.display = 'block';
+}
+

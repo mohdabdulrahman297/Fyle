@@ -35,7 +35,7 @@ input {
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #4DA1FF;
     color: #fff;
     padding: 5px 10px;
     border: none;
@@ -45,7 +45,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #007BFF;
 }
 
 #profile-container {
@@ -102,3 +102,22 @@ button:hover {
     color: #555;
     font-size: 14px;
 }
+
+
+/* Add this to your styles.css */
+#pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#older,
+#newer {
+    padding: 4px 8px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #4DA1FF
+}
+
+
