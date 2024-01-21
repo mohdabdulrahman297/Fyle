@@ -39,12 +39,14 @@ The application uses the GitHub API to fetch user and repository data. An access
 
 ## How to Add Your GitHub Token
 
-Get a GitHub Personal Access Token here.
+Get a GitHub Personal Access Token
+
 Copy the token.
+
 Open the index.js file.
+
 Replace the value of GITHUB_TOKEN with your token.
-javascript
-Copy code
+
 const GITHUB_TOKEN = 'your-github-token';
 
 ## Styling
